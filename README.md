@@ -1,6 +1,9 @@
 
 # Bloomreach - Node Search REST API
 
+#### Local setup
+Refer README.txt file for the local setup of the application
+
 ## Tasks
 ### 2.3 List nodes
 Improve AssessmentServlet to recursively find all the nodes under /content/documents/ and
