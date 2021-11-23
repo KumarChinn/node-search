@@ -3,13 +3,13 @@ package org.example.repository;
 import junit.framework.TestCase;
 import org.example.dto.NodeInfo;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.spy;
-
 import static org.mockito.Mockito.*;
 
 import javax.jcr.*;
@@ -22,7 +22,7 @@ import java.util.List;
 /**
  * Created by chinnku on Nov, 2021
  */
-public class NodeSearchRepositoryTest extends TestCase {
+public class NodeSearchRepositoryTest {
 
     NodeSearchRepository nodeSearchRepository;
 
@@ -48,14 +48,14 @@ public class NodeSearchRepositoryTest extends TestCase {
         NodeInfo nodeInfo = nodeSearchReopSpy.getUniqueNodeById("836487324");
 
         //Then
-        assertNotNull(nodeInfo);
-        assertEquals(nodeInfo.getNodeName(), contentNode.getName());
-        assertEquals(nodeInfo.getNodePath(), contentNode.getPath());
-        assertEquals(nodeInfo.getUuid(), contentNode.getIdentifier());
-        assertEquals(nodeInfo.getPrimaryType(), contentNode.getPrimaryNodeType().getName());
-        assertNotNull(nodeInfo.getNodeProperties());
-        assertFalse(nodeInfo.getNodeProperties().isEmpty());
-        assertEquals(nodeInfo.getNodeProperties().size(), 1);
+        Assert.assertNotNull(nodeInfo);
+        Assert.assertEquals(nodeInfo.getNodeName(), contentNode.getName());
+        Assert.assertEquals(nodeInfo.getNodePath(), contentNode.getPath());
+        Assert.assertEquals(nodeInfo.getUuid(), contentNode.getIdentifier());
+        Assert.assertEquals(nodeInfo.getPrimaryType(), contentNode.getPrimaryNodeType().getName());
+        Assert.assertNotNull(nodeInfo.getNodeProperties());
+        Assert.assertFalse(nodeInfo.getNodeProperties().isEmpty());
+        Assert.assertEquals(nodeInfo.getNodeProperties().size(), 1);
 
     }
 
@@ -68,8 +68,8 @@ public class NodeSearchRepositoryTest extends TestCase {
         List<NodeInfo> nodeInfo = nodeSearchReopSpy.getNodesContainValue("123213", "836487324");
 
         //Then
-        assertNotNull(nodeInfo);
-        assertFalse(nodeInfo.isEmpty());
+        Assert.assertNotNull(nodeInfo);
+        Assert.assertFalse(nodeInfo.isEmpty());
     }
 
     @Test
@@ -81,8 +81,8 @@ public class NodeSearchRepositoryTest extends TestCase {
         List<NodeInfo> nodeInfo = nodeSearchReopSpy.getNodesContainProp("2342", "123213", "836487324");
 
         //Then
-        assertNotNull(nodeInfo);
-        assertFalse(nodeInfo.isEmpty());
+        Assert.assertNotNull(nodeInfo);
+        Assert.assertFalse(nodeInfo.isEmpty());
     }
 
     @Test
@@ -96,8 +96,8 @@ public class NodeSearchRepositoryTest extends TestCase {
         List<NodeInfo> nodeInfo = nodeSearchRepository1.getNodeByPath("23432");
 
         //Then
-        assertNotNull(nodeInfo);
-        assertFalse(nodeInfo.isEmpty());
+        Assert.assertNotNull(nodeInfo);
+        Assert.assertFalse(nodeInfo.isEmpty());
     }
 
     @Before
@@ -142,7 +142,7 @@ public class NodeSearchRepositoryTest extends TestCase {
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
         nodeSearchRepository = null;
         nodeType = null;
         contentNode = null;

@@ -16,7 +16,7 @@ public class NodeEventListener implements EventListener {
     private static Logger LOGGER = LoggerFactory.getLogger(NodeEventListener.class);
 
     /**
-     * @param eventIterator
+     * @param eventIterator - event iterator
      */
     @Override
     public void onEvent(EventIterator eventIterator) {
@@ -26,15 +26,15 @@ public class NodeEventListener implements EventListener {
                 LOGGER.info("Node Event Occurred - Event Type: " + valueOf(event.getType()) + ", Event Id: " + event.getIdentifier() + ", Event Date" + event.getDate() + ", Event Path: " + event.getPath());
             }
         } catch (Exception e) {
-            LOGGER.error("Error while processing event: ", e.getMessage());
+            LOGGER.error("Error while processing event: {}", e.getMessage());
         }
     }
 
     /**
-     * @param eventType
-     * @return
+     * @param eventType - pass the int value of the event type
+     * @return - returns the evrnt type string
      */
-    public static String valueOf(int eventType) {
+    private static String valueOf(int eventType) {
         if (eventType == Event.NODE_ADDED) {
             return "NODE_ADDED";
         } else if (eventType == Event.NODE_MOVED) {

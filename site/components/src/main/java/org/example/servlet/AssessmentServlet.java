@@ -16,7 +16,6 @@ import java.io.PrintWriter;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 
 /**
  * Created by chinnku on November, 2021
@@ -34,14 +33,11 @@ public class AssessmentServlet extends HttpServlet {
     /**
      * goGet method for the AssessmentServlet
      *
-     * @param req
-     * @param res
-     * @throws ServletException
-     * @throws IOException
+     * @param req - HttpServletRequest
+     * @param res - HttpServletResponse
      */
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse res)
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse res) {
         Repository repository =
                 HstServices.getComponentManager().getComponent(Repository.class.getName());
         Session session = null;
@@ -82,17 +78,18 @@ public class AssessmentServlet extends HttpServlet {
         } catch (Exception e) {
             LOGGER.error("Exception Occurred", e);
         } finally {
-            responseStr.setLength(0);
-            session.logout();
+            if (session != null) {
+                session.logout();
+            }
         }
     }
 
     /**
      * Recursively outputs the contents of the given node.
      *
-     * @param node
-     * @param respString
-     * @throws Exception
+     * @param node - Node
+     * @param respString - String
+     * @throws Exception - Exception
      */
     private void getNode(Node node, StringBuilder respString) throws Exception {
         appendNodeHtml(node, respString);
@@ -109,9 +106,9 @@ public class AssessmentServlet extends HttpServlet {
     /**
      * Add the properties of the nodes
      *
-     * @param node
-     * @param respString
-     * @throws Exception
+     * @param node - Node
+     * @param respString - StringBuilder
+     * @throws Exception - Exception
      */
     private void addProperties(Node node, StringBuilder respString) throws Exception {
         PropertyIterator properties = node.getProperties();
@@ -120,8 +117,8 @@ public class AssessmentServlet extends HttpServlet {
             Property property = properties.nextProperty();
             if (property.getDefinition().isMultiple()) {
                 javax.jcr.Value[] values = property.getValues();
-                for (int i = 0; i < values.length; i++) {
-                    respString.append("<li>Name: " + property.getName() + ", Value: " + values[i].getString() + "</li>");
+                for (Value value : values) {
+                    respString.append("<li>Name: " + property.getName() + ", Value: " + value.getString() + "</li>");
                 }
             } else {
                 respString.append("<li>Name: " + property.getName() + ", Value: " + property.getString() + "</li>");
@@ -131,7 +128,7 @@ public class AssessmentServlet extends HttpServlet {
     }
 
     /**
-     * @param responseStr
+     * @param responseStr - StringBuilder
      */
     private void appendHtmlHead(StringBuilder responseStr) {
         responseStr.append("<!DOCTYPE html>\n" +
@@ -163,7 +160,7 @@ public class AssessmentServlet extends HttpServlet {
     }
 
     /**
-     * @param responseStr
+     * @param responseStr - StringBuilder
      */
     private void appendHtmlTail(StringBuilder responseStr) {
         responseStr.append("    </table>\n" +
@@ -172,9 +169,9 @@ public class AssessmentServlet extends HttpServlet {
     }
 
     /**
-     * @param node
-     * @param responseStr
-     * @throws RepositoryException
+     * @param node - Node
+     * @param responseStr - StringBuilder
+     * @throws RepositoryException - RepositoryException
      */
     private void appendNodeHtml(Node node, StringBuilder responseStr) throws RepositoryException {
         responseStr.append("<tr>\n" +
@@ -183,7 +180,7 @@ public class AssessmentServlet extends HttpServlet {
     }
 
     /**
-     * @param respString
+     * @param respString - StringBuilder
      */
     private void appendPropertyTail(StringBuilder respString) {
         respString.append("</ul>");

@@ -6,16 +6,13 @@ import java.util.List;
  * Created by chinnku on Nov, 2021
  */
 public class NodeInfo {
+
     public NodeInfo(String uuid, String nodeName, String nodePath, String primaryType, List<NodeProperty> nodeProperties) {
         this.uuid = uuid;
         this.nodeName = nodeName;
         this.nodePath = nodePath;
         this.primaryType = primaryType;
         this.nodeProperties = nodeProperties;
-    }
-
-    public String getUuid() {
-        return uuid;
     }
 
     private String uuid;
@@ -25,8 +22,8 @@ public class NodeInfo {
     private List<NodeProperty> nodeProperties;
     private List<Link> links;
 
-    public List<Link> getLinks() {
-        return links;
+    public String getUuid() {
+        return uuid;
     }
 
     public void setLinks(List<Link> links) {

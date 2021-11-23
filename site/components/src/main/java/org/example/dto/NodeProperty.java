@@ -19,10 +19,6 @@ public class NodeProperty {
     private List<String> propertyValues;
     private String propertyPath;
 
-    public String getPropertyPath() {
-        return propertyPath;
-    }
-
     public String getPropertyName() {
         return propertyName;
     }
