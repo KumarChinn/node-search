@@ -1,9 +1,6 @@
 package org.example.service;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.SwaggerDefinition;
-import io.swagger.annotations.Tag;
+import io.swagger.annotations.*;
 import org.example.dto.Link;
 import org.example.dto.NodeInfo;
 import org.example.repository.NodeRepository;
@@ -45,13 +42,13 @@ public class NodePlainResourceService extends org.hippoecm.hst.jaxrs.services.Ab
     @Produces(MediaType.APPLICATION_JSON)
     @ApiOperation(
             value = "Get Node by unique uuid",
-            notes = "Provide the unique uuid of the node"
+            notes = "Provide the unique uuid (node identifier) of the node to get the node details"
     )
     public NodeInfo getNodeById(
             @Context HttpServletRequest servletRequest,
             @Context HttpServletResponse servletResponse,
             @Context UriInfo uriInfo,
-            @PathParam(PARAM_UUID) String uuid) throws Exception {
+            @ApiParam(value = "Unique Node Identifier") @PathParam(PARAM_UUID) String uuid) throws Exception {
         LOGGER.info("Start of getNodeById(), uuid=" + uuid);
         NodeInfo nodeInfo = addLinksToResponse(getNodeSearchRepository().getUniqueNodeById(uuid), uriInfo);
         if (nodeInfo == null) {
@@ -84,18 +81,18 @@ public class NodePlainResourceService extends org.hippoecm.hst.jaxrs.services.Ab
     @ApiOperation(
             value = "Search Node(s)",
             notes = "Searches Nodes with multiple combinations of params\n" +
-                    "     * Possible params:\n" +
-                    "     * 1. query\n" +
-                    "     * 2. path\n" +
-                    "     * 3. prop-name, prop-value")
+                    "     Possible params combinations:\n" +
+                    "     * 1. query - ex, /nodes?query={value}\n" +
+                    "     * 2. path - ex, /nodes?path={value}\n" +
+                    "     * 3. prop-name, prop-value - ex, /nodes?prop-name={value}&prop-value={value}")
     public List<NodeInfo> searchNodes(
             @Context HttpServletRequest servletRequest,
             @Context HttpServletResponse servletResponse,
             @Context UriInfo uriInfo,
-            @QueryParam(PARAM_QUERY) String query,
-            @QueryParam(PARAM_PATH) String path,
-            @QueryParam(PARAM_PROP_NAME) String propertyName,
-            @QueryParam(PARAM_PROP_VAL) String propertyValue) throws Exception {
+            @ApiParam(value = "Any value to search nodes") @QueryParam(PARAM_QUERY) String query,
+            @ApiParam(value = "Any path value to search nodes") @QueryParam(PARAM_PATH) String path,
+            @ApiParam(value = "Valid name of the node property") @QueryParam(PARAM_PROP_NAME) String propertyName,
+            @ApiParam(value = "value of the property") @QueryParam(PARAM_PROP_VAL) String propertyValue) throws Exception {
         LOGGER.info("Start of searchNodes(), query={}, path={}, prop-name={}, prop-name={}", query, path, propertyName, propertyValue);
         List<NodeInfo> nodeList;
         if (query != null) {
