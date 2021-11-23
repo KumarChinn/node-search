@@ -17,6 +17,22 @@ public class Link {
         this.href = href;
     }
 
+    public String getRel() {
+        return rel;
+    }
+
+    public void setRel(String rel) {
+        this.rel = rel;
+    }
+
+    public String getMethod() {
+        return method;
+    }
+
+    public void setMethod(String method) {
+        this.method = method;
+    }
+
     public String getType() {
         return type;
     }

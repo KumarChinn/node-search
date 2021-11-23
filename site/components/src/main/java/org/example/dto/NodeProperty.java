@@ -23,12 +23,31 @@ public class NodeProperty {
         return propertyName;
     }
 
+    public void setPropertyName(String propertyName) {
+        this.propertyName = propertyName;
+    }
+
     public boolean isMultipleValue() {
         return isMultipleValue;
+    }
+
+    public void setMultipleValue(boolean multipleValue) {
+        isMultipleValue = multipleValue;
     }
 
     public List<String> getPropertyValues() {
         return propertyValues;
     }
 
+    public void setPropertyValues(List<String> propertyValues) {
+        this.propertyValues = propertyValues;
+    }
+
+    public String getPropertyPath() {
+        return propertyPath;
+    }
+
+    public void setPropertyPath(String propertyPath) {
+        this.propertyPath = propertyPath;
+    }
 }

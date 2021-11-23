@@ -26,23 +26,47 @@ public class NodeInfo {
         return uuid;
     }
 
-    public void setLinks(List<Link> links) {
-        this.links = links;
-    }
-
-    public String getPrimaryType() {
-        return primaryType;
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
     public String getNodeName() {
         return nodeName;
     }
 
+    public void setNodeName(String nodeName) {
+        this.nodeName = nodeName;
+    }
+
     public String getNodePath() {
         return nodePath;
     }
 
+    public void setNodePath(String nodePath) {
+        this.nodePath = nodePath;
+    }
+
+    public String getPrimaryType() {
+        return primaryType;
+    }
+
+    public void setPrimaryType(String primaryType) {
+        this.primaryType = primaryType;
+    }
+
     public List<NodeProperty> getNodeProperties() {
         return nodeProperties;
+    }
+
+    public void setNodeProperties(List<NodeProperty> nodeProperties) {
+        this.nodeProperties = nodeProperties;
+    }
+
+    public List<Link> getLinks() {
+        return links;
+    }
+
+    public void setLinks(List<Link> links) {
+        this.links = links;
     }
 }
