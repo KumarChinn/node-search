@@ -35,7 +35,7 @@ Full suit of REST service is developed and available, Please refer the swagger f
 4. Query nodes by path -> http://localhost:8080/site/restservices/nodes?path=news=content/documents
 5. Query nodes by property name and value -> http://localhost:8080/site/restservices/nodes?prop-name=jcr:primaryType&prop-value=hippostd:folder
 
-### Observation listener
+### 2.6 Observation listener
 (Optional) Register a listener that prints out details about events that occur on nodes under
 /content/ in the tree. You can trigger such events by creating documents and folders in the cms
 interface.
