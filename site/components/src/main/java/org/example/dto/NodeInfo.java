@@ -22,6 +22,12 @@ public class NodeInfo {
     private List<NodeProperty> nodeProperties;
     private List<Link> links;
 
+    public NodeInfo(String uuid, String nodeName, String primaryType) {
+        this.uuid = uuid;
+        this.nodeName = nodeName;
+        this.primaryType = primaryType;
+    }
+
     public String getUuid() {
         return uuid;
     }
