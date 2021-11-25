@@ -29,11 +29,11 @@ path.
 Full suit of REST service is developed and available, Please refer the swagger for API documentation,
 #### Swagger JSON: http://localhost:8080/site/restservices/swagger.json
 #### Some sample REST APIs,
-1. get all the nodes -> http://localhost:8080/site/restservices/nodes
-2. get a unique node by Id -> http://localhost:8080/site/restservices/nodes/2c21a29c-a5d1-4e84-aec4-594e5bf93b25
-3. Query nodes by any given value -> http://localhost:8080/site/restservices/nodes?query=news
-4. Query nodes by path -> http://localhost:8080/site/restservices/nodes?path=news=content/documents
-5. Query nodes by property name and value -> http://localhost:8080/site/restservices/nodes?prop-name=jcr:primaryType&prop-value=hippostd:folder
+1. get all the nodes -> http://localhost:8080/site/restservices/v1/nodes
+2. get a unique node by Id -> http://localhost:8080/site/restservices/v1/nodes/2c21a29c-a5d1-4e84-aec4-594e5bf93b25
+3. Query nodes by any given value -> http://localhost:8080/site/restservices/v1/nodes?query=news
+4. Query nodes by path -> http://localhost:8080/site/restservices/v1/nodes?path=news=content/documents
+5. Query nodes by property name and value -> http://localhost:8080/site/restservices/v1/nodes?prop-name=jcr:primaryType&prop-value=hippostd:folder
 
 ### 2.6 Observation listener
 (Optional) Register a listener that prints out details about events that occur on nodes under

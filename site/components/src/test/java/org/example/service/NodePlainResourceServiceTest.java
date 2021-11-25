@@ -133,7 +133,7 @@ public class NodePlainResourceServiceTest {
         nodeSearchRepository = mock(NodeSearchRepository.class);
         nodePlainResourceServiceSpy = spy(nodePlainResourceService);
         doReturn(nodeSearchRepository).when(nodePlainResourceServiceSpy).getNodeSearchRepository();
-        URI uri = new URI("https://localhost:8080/nodes");
+        URI uri = new URI("https://localhost:8080/site/restservice/v1/nodes");
         when(uriInfo.getAbsolutePath()).thenReturn(uri);
         when(uriInfo.getBaseUri()).thenReturn(uri);
         nodeInfoList.add(new NodeInfo("2c21a29c-a5d1-4e84-aec4-594e5bf93b25", "documents", "hippostd:folder"));

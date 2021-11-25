@@ -20,8 +20,8 @@ import java.util.Optional;
 /**
  * Created by chinnku on Nov, 2021
  */
-@Path("/nodes")
-@Api("/nodes")
+@Path("v1/nodes")
+@Api("v1/nodes")
 @SwaggerDefinition(tags = {@Tag(name = "Node Search Service", description = "To Search Nodes")})
 public class NodePlainResourceService extends org.hippoecm.hst.jaxrs.services.AbstractResource {
 
