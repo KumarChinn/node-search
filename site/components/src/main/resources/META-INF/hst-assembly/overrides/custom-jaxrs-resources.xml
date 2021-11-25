@@ -38,4 +38,13 @@
         </property>
     </bean>
 
+    <bean id="customJaxrsRestEntityProviders"
+          class="org.springframework.beans.factory.config.ListFactoryBean">
+        <property name="sourceList">
+            <list>
+                <bean class="org.example.utils.exception.NodeExceptionHandler" />
+            </list>
+        </property>
+    </bean>
+
 </beans>
